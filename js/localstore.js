@@ -2,10 +2,12 @@
 
   let myName = document.getElementById("my-name"); 
   let getName = document.getElementById("get-name");
+  let clearName = document.getElementById("clear-names");
   let userName = document.getElementById("user-name"); 
   let nameStored = localStorage.name;
+  let nameCleared
   console.log(`Name on page load: ${nameStored}`);
-  
+  console.log(clearName);
   if(nameStored) {
     // If there's a name in localStorage, use it:
     myName.innerHTML = `again ${nameStored}`;
@@ -31,6 +33,9 @@
     console.log(`New name stored: ${nameStored}`);
     return false;
   }
+  function NamesCleared(){ 
+  localStorage.clear();
+  }
 
   // Listens for a form submit action: 
   if (typeof event === "undefined") {
@@ -40,5 +45,8 @@
     getName.addEventListener("submit", PerformGreeting);
     event.preventDefault();
   }
+ 
+  clearName.addEventListener("click", nameCleared);
+  
 
 }());
